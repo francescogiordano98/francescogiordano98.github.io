@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Francesco Giordano — PhD Candidate in Economics at HEC Paris." />
+  <title>Francesco Giordano</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a class="nav-name" href="index.html">Francesco Giordano</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="more.html">Here &amp; There</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap page-content">
+
+      <h1>Francesco Giordano</h1>
+
+      <p>
+        I am a PhD Candidate in the Department of Economics and Decision Sciences at
+        <a href="https://www.hec.edu" target="_blank" rel="noopener">HEC Paris</a>.
+      </p>
+
+      <p>
+        I study how information and uncertainty shape strategic behavior.
+        My work lies at the intersection of game theory, information design, and decision theory. 
+        On the applied side, I study cognitive uncertainty in expert judgment, using data from a leading European startup incubator.
+      </p>
+
+      <p>
+        I am one of the organizers of the
+        <a href="#" target="_blank" rel="noopener">Junior Game Theory Seminar</a>
+        at the Institut Henri Poincaré, Paris.
+        I am also a research affiliate of the
+        <a href="https://www.hec.edu/en/faculty-research/centers-institutes/ion-management-science-lab"
+           target="_blank" rel="noopener">ION Management Science Lab</a>
+        at HEC Paris.
+      </p>
+
+      <p>
+        I am advised by
+        <a href="https://sites.google.com/site/tristantomala2"
+           target="_blank" rel="noopener">Tristan Tomala</a>
+        and
+        <a href="https://sites.google.com/site/frederickoessler"
+           target="_blank" rel="noopener">Frédéric Koessler</a>.
+      </p>
+
+      <div class="about-links">
+        <a href="cv.pdf"><strong>Curriculum Vitae (PDF)</strong></a>
+        <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+
+    </div>
+  </main>
+
+  <!-- ===== Floating chatbot ===== -->
+  <div class="bot-bubble" id="bot-bubble" onclick="toggleChat()" title="Ask me anything">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </div>
+
+  <div class="bot-panel" id="bot-panel">
+    <div class="bot-header">
+      <span>Ask me anything</span>
+      <button class="bot-close" onclick="toggleChat()">×</button>
+    </div>
+
+    <div class="bot-thread" id="chat-thread">
+      <div class="bot-msg bot-msg-assistant">
+        Hi! I'm Francesco's assistant. Ask me about his research, papers, or background.
+      </div>
+      <div class="bot-chips" id="chat-chips">
+        <button class="bot-chip" onclick="askChip(this)">What do you work on?</button>
+        <button class="bot-chip" onclick="askChip(this)">Tell me about your main paper</button>
+        <button class="bot-chip" onclick="askChip(this)">Who are your advisors?</button>
+        <button class="bot-chip" onclick="askChip(this)">Are you on the job market?</button>
+      </div>
+    </div>
+
+    <form class="bot-form" onsubmit="sendMessage(event)">
+      <input class="bot-input" id="chat-input" type="text" placeholder="Type a question…" autocomplete="off" />
+      <button class="bot-send" type="submit">↑</button>
+    </form>
+  </div>
+
+  <script>
+  // ── Replace with your Cloudflare Worker URL after deploying ──
+  const WORKER_URL = "https://your-worker.your-subdomain.workers.dev";
+  // ─────────────────────────────────────────────────────────────
+
+  const history = [];
+  let isOpen = false;
+
+  function toggleChat() {
+    isOpen = !isOpen;
+    document.getElementById('bot-panel').classList.toggle('open', isOpen);
+    document.getElementById('bot-bubble').classList.toggle('active', isOpen);
+    if (isOpen) document.getElementById('chat-input').focus();
+  }
+
+  function addMessage(role, text) {
+    history.push({ role, content: text });
+    const thread = document.getElementById('chat-thread');
+    const div = document.createElement('div');
+    div.className = 'bot-msg bot-msg-' + role;
+    div.textContent = text;
+    thread.appendChild(div);
+    thread.scrollTop = thread.scrollHeight;
+  }
+
+  function addTyping() {
+    const thread = document.getElementById('chat-thread');
+    const div = document.createElement('div');
+    div.className = 'bot-msg bot-msg-assistant bot-typing';
+    div.id = 'chat-typing';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    thread.appendChild(div);
+    thread.scrollTop = thread.scrollHeight;
+  }
+
+  function removeTyping() {
+    const el = document.getElementById('chat-typing');
+    if (el) el.remove();
+  }
+
+  async function send(text) {
+    if (!text.trim()) return;
+    const chips = document.getElementById('chat-chips');
+    if (chips) chips.remove();
+    addMessage('user', text);
+    addTyping();
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
+      });
+      const data = await res.json();
+      removeTyping();
+      const reply = data?.content?.[0]?.text ?? "Sorry, I couldn't get a response.";
+      addMessage('assistant', reply);
+    } catch {
+      removeTyping();
+      addMessage('assistant', "Something went wrong. Try emailing me directly.");
+    }
+  }
+
+  function sendMessage(e) {
+    e.preventDefault();
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    input.value = '';
+    send(text);
+  }
+
+  function askChip(btn) {
+    send(btn.textContent);
+  }
+  </script>
+
+</body>
+</html>

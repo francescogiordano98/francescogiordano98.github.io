@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arts and Sciences — Francesco Giordano</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a class="nav-name" href="index.html">Francesco Giordano</a>
+      <ul class="nav-links">
+        <li><a href="index.html">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="more.html" class="active">Here &amp; There</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap page-content">
+
+      <p class="subpage-back"><a href="more.html">← Here &amp; There</a></p>
+      <h1 class="page-h1">Arts and Sciences</h1>
+
+      <p class="more-note">A random pick, refreshed each visit.</p>
+
+      <div id="culture-pick"></div>
+      <p style="margin-top:1.2rem;"><button class="refresh-btn" onclick="draw()">↻ another draw</button></p>
+
+    </div>
+  </main>
+
+  <script>
+  // ── Add or edit picks here ────────────────────────────────────
+  const CULTURE = [
+    { type: "Album", title: "Kind of Blue", creator: "Miles Davis", note: "The best-selling jazz album of all time, and probably the most relaxed 45 minutes you'll ever spend." },
+    { type: "Album", title: "In Rainbows", creator: "Radiohead", note: "The one where everything clicks." },
+    { type: "Album", title: " ", creator: "Athmosphere", note: " ." },
+    { type: "Album", title: " ", creator: "Stokka & Madbuddy", note: " ." },
+    { type: "Song", title: "La città vecchia", creator: "Fabrizio De Andrè", note: " ." },
+    { type: "Book", title: "Memoires d'Hadrien", creator: "Marguerite Yourcenar", note: " ." },
+    { type: "Book", title: "Le città invisibili", creator: "Italo Calvino", note: " ." },
+    { type: "Book", title: "Gödel, Escher, Bach", creator: "Douglas Hofstadter", note: "A strange loop of a book about strange loops." },
+    { type: "Book", title: "Consciusness: ", creator: " ", note: " " },
+    { type: "Book", title: "This is water: ", creator: " ", note: "A fish does not know what water is." },
+    { type: "Poem", title: " ", creator: " ", note: " ." },
+    { type: "Painting", title: "", creator: "Hans Holbein the Younger", note: "A Renaissance masterpiece hiding a skull in plain sight." },
+    { type: "Theater", title: "Six Characters in Search of an Author", creator: "Luigi Pirandello", note: "Meta-theater that makes you question what a play even is." },
+    { type: "Theater", title: "Waiting for Godot", creator: "Samuel Beckett", note: "Two men wait. Nothing happens. Twice." },
+    { type: "Theater", title: "Oublie moi", creator: " ", note: " ." },
+    { type: "Pleasure", title: "Supersonic", creator: " ", note: "where rock in Paris." },
+    { type: "Pleasure", title: "Caffè Rosso (Venezia)", creator: " ", note: "." },
+    { type: "Science", title: "Non-cooperative games", creator: "John Nash", note: "Nash equilibria exist." },
+    { type: "Science", title: "Wikipedia 'list of lists of lists'", creator: "wikipedia", note: "Knowledge and categorization." }
+  ];
+  // ─────────────────────────────────────────────────────────────
+
+  let lastIndex = -1;
+
+  function draw() {
+    let idx;
+    do { idx = Math.floor(Math.random() * CULTURE.length); }
+    while (CULTURE.length > 1 && idx === lastIndex);
+    lastIndex = idx;
+    const pick = CULTURE[idx];
+    document.getElementById('culture-pick').innerHTML = `
+      <div class="culture-card">
+        <span class="culture-type">${pick.type}</span>
+        <span class="culture-title">${pick.title}</span>
+        <span class="culture-creator"> — ${pick.creator}</span>
+        <p class="culture-note">${pick.note}</p>
+      </div>
+    `;
+  }
+
+  draw();
+  </script>
+
+</body>
+</html>

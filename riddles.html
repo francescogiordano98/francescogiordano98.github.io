@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riddles — Francesco Giordano</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a class="nav-name" href="index.html">Francesco Giordano</a>
+      <ul class="nav-links">
+        <li><a href="index.html">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="more.html" class="active">Here &amp; There</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap page-content">
+
+      <p class="subpage-back"><a href="more.html">← Here &amp; There</a></p>
+      <h1 class="page-h1">Riddles</h1>
+      <p class="more-note">Click to reveal the answer.</p>
+
+      <div id="riddle-container"></div>
+      <p style="margin-top:1.2rem;"><button class="refresh-btn" onclick="draw()">↻ another</button></p>
+
+    </div>
+  </main>
+
+
+  <script>
+  // ── Add or edit riddles here ──────────────────────────────────
+  const RIDDLES = [
+    {
+      q: `This is not a riddle, but it's fun, and somehow has to do with game theory. 
+      
+      <br><br> Final exams:
+
+      <br><br> One year there were these two guys at Duke who were taking Chemistry and who did pretty well on all of the quizzes and the midterms and labs, etc., such that going into the final they had a solid A.
+      These two friends were so confident going into the final that the weekend before finals week (even though the Chem final was on Monday), they decided to go up to UVirginia and party with some friends up there. 
+      So they did this and had a great time. However, with their hangovers and everything, they overslept all day Sunday and didn't make it back to Duke until early monday morning. 
+      Rather than taking the final then, what they did was to find the Professor after the final and explain to him why they missed the final. 
+      They told him that they went up to UVa for the weekend, and had planned to come back in time to study, but that they had a flat tire on the way back and didn't have a spare and couldn't get help for a long time and so were late getting back to campus. 
+      The Professor thought this over and then agreed that they could make up the final on the following day. The two guys were elated and relieved. 
+      So, they studied that night and went in the next day at the time that the Professor had told them. He placed them in separate rooms and handed each of them a test booklet and told them to begin. 
+      They looked at the first problem, which was something simple about molarity and solutions and was worth 5 points. "Cool" they thought, "this is going to be easy." 
+      They did that problem and then turned the page. They were unprepared, however, for what they saw on the next page. It said:
+
+      <br><br> (95 points) Which tire?
+      
+      <br><br> (From the webpage of Prof. Sergiu Hart, but circulated in many places)`,
+      a: "The game has three Nash equilibria and the story shows the importance of coordination and equilibrium selection"
+    },
+    {
+      q: `You have the opportunity to make one bid on a widget whose value to its owner is, as far as you know, uniformly random between 0€ and 100€.
+      What you do know is that you are so much better at operating the widget than he is, that its value to you is 80% greater than its value to him
+      <br><br> If you offer more than the widget is worth to the owner, he will sell it. But you only get one shot. How much should you bid?
+      <br><br> (From the Mathematical Puzzles of Peter Winkler)`,
+      a: "You should not bid."
+    },
+    {
+      q: `There are n passengers boarding a plane with n assigned seats. 
+      At a random time, a drunk passenger arrives and randomly picks any seat.<br><br>Every subsequent passenger:
+      <br>— sits in their assigned seat if it’s free,
+      <br>— otherwise picks a random free seat.
+      <br><br>What is the probability that the last passenger sits in their correct seat?
+      <br><br> (Folk)`,
+      a: "1/2."
+    }
+  ];
+  // ─────────────────────────────────────────────────────────────
+
+  let lastIndex = -1;
+
+  function draw() {
+    let idx;
+    do { idx = Math.floor(Math.random() * RIDDLES.length); }
+    while (RIDDLES.length > 1 && idx === lastIndex);
+    lastIndex = idx;
+    const r = RIDDLES[idx];
+    document.getElementById('riddle-container').innerHTML = `
+      <div class="riddle">
+        <div class="riddle-q" role="button" tabindex="0"
+             onclick="reveal(this)" onkeydown="if(event.key==='Enter')reveal(this)">
+          ${r.q}
+        </div>
+        <div class="riddle-a">${r.a}</div>
+      </div>
+    `;
+  }
+
+  function reveal(qEl) {
+    const a = qEl.nextElementSibling;
+    const open = a.classList.toggle('open');
+    qEl.classList.toggle('answered', open);
+  }
+
+  draw();
+  </script>
+
+</body>
+</html>
