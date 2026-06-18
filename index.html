@@ -6,6 +6,43 @@
   <meta name="description" content="Francesco Giordano — PhD Candidate in Economics at HEC Paris." />
   <title>Francesco Giordano</title>
   <link rel="stylesheet" href="style.css" />
+  
+  <style>
+    /* Layout container to place picture and text side-by-side */
+    .page-content {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;          /* Adjusts the spacing between the image and the text */
+      align-items: flex-start;
+      margin-top: 40px;   /* Adds some breathing room below the nav bar */
+    }
+
+    /* Makes the profile text take up the remaining horizontal space */
+    .bio-text {
+      flex: 1;
+    }
+
+    /* Styles the profile picture */
+    .profile-pic {
+      width: 180px;       /* Width of the circle */
+      height: 180px;      /* Height must match width for a perfect circle */
+      object-fit: cover;  /* Prevents the image from stretching if it's not a square */
+      border-radius: 50%; /* This cuts the image into a circle */
+    }
+
+    /* Responsive design: Stack them vertically on mobile devices */
+    @media (max-width: 768px) {
+      .page-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center; /* Centers your text on small screens */
+      }
+      
+      .profile-pic {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -24,42 +61,45 @@
   <main>
     <div class="wrap page-content">
 
-      <h1>Francesco Giordano</h1>
+      <img src="pic.jpg" alt="Francesco Giordano" class="profile-pic" />
 
-      <p>
-      Hi, welcome to my website! I am a third-year PhD student in the Department of Economics and Decision Sciences at <a href="https://www.hec.edu/en/faculty-research/departments/economics-decision-sciences" target="_blank" rel="noopener">HEC Paris</a>.
-      </p>
+      <div class="bio-text">
+        <h1>Francesco Giordano</h1>
 
-      <p>
-      My research intersects game theory and information economics, with applications to entrepreneurship. 
-      </p>
+        <p>
+        Hi, welcome to my website! I am a third-year PhD student in the Department of Economics and Decision Sciences at <a href="https://www.hec.edu/en/faculty-research/departments/economics-decision-sciences" target="_blank" rel="noopener">HEC Paris</a>.
+        </p>
 
-      <p>
-        I am advised by
-        <a href="https://sites.google.com/site/tristantomala2"
-           target="_blank" rel="noopener">Tristan Tomala</a>
-        and
-        <a href="https://sites.google.com/site/frederickoessler"
-           target="_blank" rel="noopener">Frédéric Koessler</a>.
-      </p>
+        <p>
+        My research intersects game theory and information economics, with applications to entrepreneurship. 
+        </p>
 
-      <p>
-        I am one of the organizers of the
-        <a href="https://sites.google.com/view/seminairetheoriedesjeux/junior-seminar-20252026"
-           target="_blank" rel="noopener">Junior Game Theory Seminar</a> at the Institut Henri Poincaré (Paris) and of the <a href="https://sites.google.com/view/hecon/home"
-           target="_blank" rel="noopener">HEC PhD Conference</a>.
-        I am also a Research Fellow at the
-        <a href="https://www.hec.edu/en/innovation-entrepreneurship-institute/news/shaping-future-mentorship-inside-ion-management-science-lab-hec-paris-0"
-           target="_blank" rel="noopener">ION Management Science Lab</a>
-        at HEC Paris.
-      </p>
+        <p>
+          I am advised by
+          <a href="https://sites.google.com/site/tristantomala2"
+             target="_blank" rel="noopener">Tristan Tomala</a>
+          and
+          <a href="https://sites.google.com/site/frederickoessler"
+             target="_blank" rel="noopener">Frédéric Koessler</a>.
+        </p>
 
-      <div class="about-links">
-        <a href="cv.pdf"> CV </a>
-        <a href="https://scholar.google.com/citations?user=P0sxTz0AAAAJ&hl=en" target="_blank" rel="noopener"> Google Scholar  </a>
-        <a href="https://github.com/francescogiordano98" target="_blank" rel="noopener"> GitHub   </a>
+        <p>
+          I am one of the organizers of the
+          <a href="https://sites.google.com/view/seminairetheoriedesjeux/junior-seminar-20252026"
+             target="_blank" rel="noopener">Junior Game Theory Seminar</a> at the Institut Henri Poincaré (Paris) and of the <a href="https://sites.google.com/view/hecon/home"
+             target="_blank" rel="noopener">HEC PhD Conference</a>.
+          I am also a Research Fellow at the
+          <a href="https://www.hec.edu/en/innovation-entrepreneurship-institute/news/shaping-future-mentorship-inside-ion-management-science-lab-hec-paris-0"
+             target="_blank" rel="noopener">ION Management Science Lab</a>
+          at HEC Paris.
+        </p>
+
+        <div class="about-links">
+          <a href="cv.pdf"> CV </a>
+          <a href="https://scholar.google.com/citations?user=P0sxTz0AAAAJ&hl=en" target="_blank" rel="noopener"> Google Scholar  </a>
+          <a href="https://github.com/francescogiordano98" target="_blank" rel="noopener"> GitHub   </a>
+        </div>
       </div>
-
 
     </div>
   </main>
