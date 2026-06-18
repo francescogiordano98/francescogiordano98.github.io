@@ -8,13 +8,20 @@
   <link rel="stylesheet" href="style.css" />
   
   <style>
+    /* Widen the desktop layout and decrease outer margins */
+    .wrap {
+      max-width: 960px;   /* Increased from typical defaults to give more breathing room */
+      margin: 0 auto;     /* Keeps the content beautifully centered on large screens */
+      padding: 0 30px;    /* Decreased side padding on desktop to utilize more screen width */
+    }
+
     /* Layout container to place picture and text side-by-side */
     .page-content {
       display: flex;
       flex-direction: row;
-      gap: 40px;          /* Restored gap for original size proportion */
+      gap: 40px;          
       align-items: flex-start;
-      margin-top: 40px;   /* Adds some breathing room below the nav bar */
+      margin-top: 40px;   
     }
 
     /* Makes the profile text take up the remaining horizontal space */
@@ -22,31 +29,27 @@
       flex: 1;
     }
 
-    /* Styles the circular frame container */
+    /* Styles the profile picture frame container */
     .profile-pic-container {
-      width: 160px;               /* Keeps the circle the original size */
-      height: 200px;              /* Keeps the circle the original size */
-      /* border-radius: 50%;         /* Forces the container to be a circle */
+      width: 160px;               /* Kept matching width */
+      height: 160px;              /* Balanced height to 160px to maintain a perfect square frame */
       background-image: url('pic.jpg'); 
-      background-position: center; /* Centers your photo inside the circle */
+      background-position: center; 
       background-repeat: no-repeat;
-      
-      /* This scales the picture inside the circle.
-        80% means the image fills 80% of the circle, making it appear "smaller".
-        Adjust this percentage up or down to make the inner photo larger or smaller!
-      */
       background-size: 90%;       
-      
-      /* Optional: Background color to fill the extra space around the smaller image */
       background-color: #f7f7f7;  
     }
 
     /* Responsive design: Stack them vertically on mobile devices */
     @media (max-width: 768px) {
+      .wrap {
+        padding: 0 20px;  /* Slightly tighter margins for small screens */
+      }
+
       .page-content {
         flex-direction: column;
         align-items: center;
-        text-align: center; /* Centers your text on small screens */
+        text-align: center; 
       }
       
       .profile-pic-container {
