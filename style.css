@@ -86,13 +86,18 @@ section {
 section:last-child { border-bottom: none; }
 
 /* ---------- About / page content ---------- */
-/* Flexbox desktop container for side-by-side alignment */
+/* Base setup for all pages: provides an elegant top margin and default vertical rows */
 .page-content { 
+  max-width: var(--max-w); 
+  margin-top: 5rem;           /* Fixed narrow top margin relative to navbar */
+}
+
+/* Side-by-side flexbox alignment happens ONLY on pages carrying your profile picture */
+.page-content:has(.profile-pic-container) {
   display: flex;
   flex-direction: row;
   gap: 45px;
   align-items: flex-start;
-  max-width: var(--max-w); 
 }
 
 .bio-text {
@@ -588,8 +593,8 @@ footer {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
-  /* Dynamic structural stacking for your vertical portrait wrapper on mobile/tablet */
-  .page-content {
+  /* Layout stacks vertically on mobile & tablet viewports */
+  .page-content:has(.profile-pic-container) {
     flex-direction: column;
     align-items: center;
     text-align: center;
