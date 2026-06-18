@@ -12,7 +12,7 @@
     .page-content {
       display: flex;
       flex-direction: row;
-      gap: 30px;          /* Adjusted slightly tighter for a smaller image */
+      gap: 40px;          /* Restored gap for original size proportion */
       align-items: flex-start;
       margin-top: 40px;   /* Adds some breathing room below the nav bar */
     }
@@ -22,12 +22,23 @@
       flex: 1;
     }
 
-    /* Styles the profile picture */
-    .profile-pic {
-      width: 140px;       /* Reduced from 180px to make it smaller */
-      height: 140px;      /* Must perfectly match width to stay a circle */
-      object-fit: cover;  /* Prevents the image from stretching if it's not a square */
-      border-radius: 50%; /* This cuts the image into a circle */
+    /* Styles the circular frame container */
+    .profile-pic-container {
+      width: 180px;               /* Keeps the circle the original size */
+      height: 180px;              /* Keeps the circle the original size */
+      border-radius: 50%;         /* Forces the container to be a circle */
+      background-image: url('pic.jpg'); 
+      background-position: center; /* Centers your photo inside the circle */
+      background-repeat: no-repeat;
+      
+      /* This scales the picture inside the circle.
+        80% means the image fills 80% of the circle, making it appear "smaller".
+        Adjust this percentage up or down to make the inner photo larger or smaller!
+      */
+      background-size: 80%;       
+      
+      /* Optional: Background color to fill the extra space around the smaller image */
+      background-color: #f7f7f7;  
     }
 
     /* Responsive design: Stack them vertically on mobile devices */
@@ -38,7 +49,7 @@
         text-align: center; /* Centers your text on small screens */
       }
       
-      .profile-pic {
+      .profile-pic-container {
         margin-bottom: 20px;
       }
     }
@@ -61,7 +72,7 @@
   <main>
     <div class="wrap page-content">
 
-      <img src="pic.jpg" alt="Francesco Giordano" class="profile-pic" />
+      <div class="profile-pic-container"></div>
 
       <div class="bio-text">
         <h1>Francesco Giordano</h1>
