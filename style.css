@@ -145,7 +145,16 @@ section:last-child { border-bottom: none; }
 .about-links a { color: var(--text); }
 
 /* ---------- Main layout ---------- */
-main { padding: 2.8rem 0 4rem; }
+main { 
+  padding: 0 0 4rem; 
+}
+
+/* Base structural setup for all standalone pages */
+.page-content {  
+  max-width: var(--max-w); 
+  margin: 5rem auto 0;        /* Centers your layout dynamically across pages */
+  padding: 0 40px;            /* Applies your universal page gutters cleanly */
+}
 
 /* ---------- Section headings ---------- */
 .section-title {
