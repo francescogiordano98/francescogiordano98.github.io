@@ -97,7 +97,7 @@ section:last-child { border-bottom: none; }
 /* Scoped flexbox alignment: Happens ONLY on pages with explicitly defined homepage layout */
 .page-content.bio-layout {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   gap: 45px;
   align-items: flex-start;
 }
