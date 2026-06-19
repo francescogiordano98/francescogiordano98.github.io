@@ -94,7 +94,7 @@ section:last-child { border-bottom: none; }
   padding: 0 40px;            /* Applies your universal page gutters cleanly */
 }
 
-/* Scoped flexbox alignment: Happens ONLY on pages with explicitly defined homepage layout */
+/* Scoped flexbox alignment: FIXED to force horizontal row-reverse layout on desktop viewports */
 .page-content.bio-layout {
   display: flex;
   flex-direction: row-reverse;
@@ -104,6 +104,7 @@ section:last-child { border-bottom: none; }
 
 .bio-text {
   flex: 1;
+  min-width: 0;               /* Prevents structural wide elements from breaking desktop row layouts */
 }
 
 /* Portrait rectangle frame setup for your pic */
