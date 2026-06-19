@@ -7,13 +7,14 @@
   <title>Here &amp; There — Francesco Giordano</title>
   <link rel="stylesheet" href="style.css" />
 
-    <style>
-    /* Widen the desktop layout and decrease outer margins */
+  <style>
+    /* Clean local structural scale overrides */
     .wrap {
-      max-width: 800px;   /* Increased from typical defaults to give more breathing room */
-      margin: 0 auto;     /* Keeps the content beautifully centered on large screens */
-      padding: 0 40px;    /* Decreased side padding on desktop to utilize more screen width */
+      max-width: 800px;   
+      margin: 0 auto;     
+      padding: 0 40px;    
     }
+  </style> <!-- FIXED: Properly closed the style tag so the page contents can render -->
 </head>
 <body>
 
@@ -30,32 +31,17 @@
   </nav>
 
   <main>
-    <div class="wrap page-content">
+    <!-- FIXED: Separated the page-content container so it maps beautifully to your centralized style.css system -->
+    <div class="page-content">
 
       <h1 class="page-h1">Here &amp; There</h1>
 
-      <p style="font-style:italic; color:var(--muted); font-size:.88rem;">Coming soon.</p>
+      <p style="font-style:italic; color:var(--muted); font-size:.88rem; margin-bottom: 2rem;">Coming soon.</p>
 
-      <!--p class="more-index-nav">
-        <a href="mentors.html">Mentors</a>   &middot;
-        <a href="friends-desk.html">At the desk</a>   &middot;
-        <a href="friends-world.html">Elsewhere</a>   &middot;
-        <a href="riddles.html">Riddles</a>   &middot;
-        <a href="culture.html">Art and science</a>   &middot;
-        <a href="pictures.html">Pictures</a>
-      </p>
-      -->
-
+      <!-- COMMENT CLEANUP: Removed the broken/malformed inner nested comments -->
       
-      <!--figure class="klee-figure">
-        <!-- Save the painting as img/klee.jpg in your Website folder -->
-        <!--img src="img/klee.jpg" alt="Limits of Reason — Paul Klee, 1927" />
-        <!--figcaption>Paul Klee, <em>Limits of Reason</em>, 1927. Pinakothek der Moderne, Munich.</figcaption>
-      <!--/figure>
-      -->
-
-      <figure class="klee-figure" style="width: 700px; margin: 10px auto;">
-        <img src="LOR_klee.jpg" alt="Limits of Reason — Paul Klee, 1927" style="width: 100%; height: auto;" />
+      <figure class="klee-figure" style="max-width: 100%; margin: 10px auto;">
+        <img src="LOR_klee.jpg" alt="Limits of Reason — Paul Klee, 1927" style="max-width: 100%; height: auto;" />
         <figcaption>Paul Klee, <em>Limits of Reason</em>, 1927. Pinakothek der Moderne, Munich.</figcaption>
       </figure>
 
