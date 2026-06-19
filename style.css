@@ -75,8 +75,9 @@ nav .wrap {
   color: var(--muted);
   text-decoration: none;
 }
-.nav-links a:hover,
-.nav-links a.active { color: var(--text); }
+.nav-links a:hover { 
+  color: var(--text); 
+}
 
 /* ---------- Sections ---------- */
 section {
