@@ -658,7 +658,7 @@ footer {
 
   /* Design for the three vertical dots icon (⋮) */
   .nav-links-container::before {
-    content: "⋮";
+    content: "☰";
     font-size: 1.3rem; /* Scaled slightly larger for touch targets */
     font-weight: bold;
     color: var(--muted);
