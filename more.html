@@ -18,15 +18,20 @@
 </head>
 <body>
 
-  <nav>
+<nav>
     <div class="wrap">
       <a class="nav-name" href="index.html">Francesco Giordano</a>
-      <ul class="nav-links">
-        <li><a href="index.html">About</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="more.html" class="active">Here &amp; There</a></li>
-      </ul>
+      
+      <!-- ADDED: This wrapper handle allows the mobile dropdown action to trigger cleanly -->
+      <div class="nav-links-container" tabindex="0">
+        <ul class="nav-links">
+          <li><a href="index.html">About</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="more.html" class="active">Here &amp; There</a></li>
+        </ul>
+      </div>
+
     </div>
   </nav>
 
