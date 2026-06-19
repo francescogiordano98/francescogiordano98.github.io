@@ -608,24 +608,75 @@ footer {
 }
 
 @media (max-width: 560px) {
-  /* Fix navbar breaking or hiding links on tiny phone screens */
-  nav .wrap {
-    gap: 0.5rem;
-  }
-  .nav-name {
-    font-size: 0.85rem;
-    white-space: nowrap;
-  }
-  .nav-links { 
-    gap: 0.7rem; 
-    flex-wrap: wrap; /* Allows links to gracefully drop to a new line if needed */
-    justify-content: flex-end;
-  }
-  .nav-links a { 
-    font-size: 0.78rem; 
-  }
-  
-  /* Retain previous responsive overrides */
+  /* Retain base layout rules */
   .people-list { columns: 1; }
   .pictures-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+
+  nav .wrap {
+    position: relative;
+    justify-content: space-between;
+  }
+
+  .nav-name {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    z-index: 102;
+  }
+
+  /* 1. Turn the <ul> container into a hidden dropdown box */
+  .nav-links {
+    display: none; /* Hide standard links by default on phone viewports */
+    position: absolute;
+    top: var(--nav-h);
+    right: 40px; /* Aligns perfectly with your page side padding */
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 0;
+    min-width: 140px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    z-index: 101;
+  }
+
+  /* Format dropdown text layout vertically */
+  .nav-links li {
+    width: 100%;
+  }
+  
+  .nav-links a {
+    display: block;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+    text-align: right;
+  }
+  
+  .nav-links a:hover {
+    background: #f7f7f7;
+  }
+
+  /* 2. Show the dropdown list when hovering over the nav-links area */
+  .nav-links-container:hover .nav-links,
+  .nav-links-container:focus-within .nav-links {
+    display: flex;
+  }
+
+  /* 3. Inject and design a minimalist CSS menu button label */
+  .nav-links-container::before {
+    content: "Menu ▾";
+    font-family: Georgia, serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--muted);
+    cursor: pointer;
+    display: inline-block;
+    line-height: var(--nav-h);
+    height: var(--nav-h);
+    z-index: 102;
+  }
+  
+  .nav-links-container:hover::before {
+    color: var(--text);
+  }
 }
