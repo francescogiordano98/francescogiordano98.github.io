@@ -94,17 +94,17 @@ section:last-child { border-bottom: none; }
   padding: 0 40px;            /* Applies your universal page gutters cleanly */
 }
 
-/* Scoped flexbox alignment: Targets .bio-layout directly to ensure it triggers on desktop */
-.bio-layout, .page-content.bio-layout {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 45px !important;
-  align-items: flex-start !important;
+/* Scoped flexbox alignment: Displays picture on the left and text on the right on PC */
+.page-content.bio-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 45px;
+  align-items: flex-start;
 }
 
 .bio-text {
   flex: 1;
-  min-width: 0;               /* Prevents structural wide elements from breaking desktop row layouts */
+  min-width: 0;               /* Prevents structural elements from breaking the side-by-side row layout */
 }
 
 /* Portrait rectangle frame setup for your pic */
@@ -600,12 +600,12 @@ footer {
 @media (max-width: 768px) {
   /* Layout stacks vertically on mobile & tablet viewports */
   .page-content.bio-layout {
-    flex-direction: column;
+    flex-direction: column;   /* Stacks layout components vertically on tiny widths */
     align-items: center;
     text-align: center;
   }
   .profile-pic-container {
-    margin-bottom: 25px;
+    margin-bottom: 25px;      /* Spacing protection block beneath image on phone browsers */
   }
 }
 
