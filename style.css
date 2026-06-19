@@ -97,7 +97,7 @@ section:last-child { border-bottom: none; }
 /* Scoped flexbox alignment: Targets .bio-layout directly to ensure it triggers on desktop */
 .bio-layout, .page-content.bio-layout {
   display: flex !important;
-  flex-direction: row-reverse !important;
+  flex-direction: row !important;
   gap: 45px !important;
   align-items: flex-start !important;
 }
