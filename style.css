@@ -94,12 +94,12 @@ section:last-child { border-bottom: none; }
   padding: 0 40px;            /* Applies your universal page gutters cleanly */
 }
 
-/* Scoped flexbox alignment: FIXED to force horizontal row-reverse layout on desktop viewports */
-.page-content.bio-layout {
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 45px;
-  align-items: flex-start;
+/* Scoped flexbox alignment: Targets .bio-layout directly to ensure it triggers on desktop */
+.bio-layout, .page-content.bio-layout {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  gap: 45px !important;
+  align-items: flex-start !important;
 }
 
 .bio-text {
