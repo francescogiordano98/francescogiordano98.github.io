@@ -14,7 +14,7 @@
       margin: 0 auto;     
       padding: 0 40px;    
     }
-  </style> <!-- FIXED: Properly closed the style tag so the page contents can render -->
+  </style> 
 </head>
 <body>
 
@@ -31,17 +31,15 @@
   </nav>
 
   <main>
-    <!-- FIXED: Separated the page-content container so it maps beautifully to your centralized style.css system -->
     <div class="page-content">
 
       <h1 class="page-h1">Here &amp; There</h1>
 
       <p style="font-style:italic; color:var(--muted); font-size:.88rem; margin-bottom: 2rem;">Coming soon.</p>
-
-      <!-- COMMENT CLEANUP: Removed the broken/malformed inner nested comments -->
       
-      <figure class="klee-figure" style="max-width: 100%; margin: 10px auto;">
-        <img src="LOR_klee.jpg" alt="Limits of Reason — Paul Klee, 1927" style="max-width: 100%; height: auto;" />
+      <!-- FIXED: Removed the aggressive inline widths so it defaults to your clean 260px CSS rule -->
+      <figure class="klee-figure">
+        <img src="LOR_klee.jpg" alt="Limits of Reason — Paul Klee, 1927" style="width: 100%; height: auto;" />
         <figcaption>Paul Klee, <em>Limits of Reason</em>, 1927. Pinakothek der Moderne, Munich.</figcaption>
       </figure>
 
