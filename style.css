@@ -86,14 +86,15 @@ section {
 section:last-child { border-bottom: none; }
 
 /* ---------- About / page content ---------- */
-/* Base setup for all pages: provides an elegant top margin and default vertical rows */
+/* Base setup for all pages: ensures safe centered tracking and global gutters */
 .page-content { 
   max-width: var(--max-w); 
-  margin-top: 5rem;           /* Fixed narrow top margin relative to navbar */
+  margin: 5rem auto 0;        /* Centers your layout dynamically across pages */
+  padding: 0 40px;            /* Applies your universal page gutters cleanly */
 }
 
-/* Side-by-side flexbox alignment happens ONLY on pages carrying your profile picture */
-.page-content:has(.profile-pic-container) {
+/* Scoped flexbox alignment: Happens ONLY on pages with explicitly defined homepage layout */
+.page-content.bio-layout {
   display: flex;
   flex-direction: row;
   gap: 45px;
@@ -147,13 +148,6 @@ section:last-child { border-bottom: none; }
 /* ---------- Main layout ---------- */
 main { 
   padding: 0 0 4rem; 
-}
-
-/* Base structural setup for all standalone pages */
-.page-content {  
-  max-width: var(--max-w); 
-  margin: 5rem auto 0;        /* Centers your layout dynamically across pages */
-  padding: 0 40px;            /* Applies your universal page gutters cleanly */
 }
 
 /* ---------- Section headings ---------- */
@@ -603,7 +597,7 @@ footer {
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
   /* Layout stacks vertically on mobile & tablet viewports */
-  .page-content:has(.profile-pic-container) {
+  .page-content.bio-layout {
     flex-direction: column;
     align-items: center;
     text-align: center;
